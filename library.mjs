@@ -1,5 +1,10 @@
-exports.Memento =  function(state) {
-    this.state = state;
+'use strict'
+
+/**
+ * Used to store Originator state.
+ */
+var Memento =  function() {
+    let state;
 
     this.setState = function(st) {
         this.state = st;
@@ -8,9 +13,12 @@ exports.Memento =  function(state) {
     this.getState = function() {
         return this.state;
     }
-}
+};
 
-exports.CareTaker =  function() {
+/**
+ * Used to save Memento objects into array (implemented as Stack).
+ */
+var CareTaker =  function() {
     this.mementoList = [];
 
     this.add = function(memento) {
@@ -22,4 +30,6 @@ exports.CareTaker =  function() {
         this.mementoList.splice(this.mementoList.length-1, 1);
         return memento;
     }
-}
+};
+
+export {Memento, CareTaker};
